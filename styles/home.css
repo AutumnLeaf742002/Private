@@ -1,0 +1,139 @@
+body{
+
+    background-color: #000000;
+    overflow: hidden;
+}
+
+body::-webkit-scrollbar{
+
+    display: none;
+}
+
+.contain-all{
+
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.section{
+
+}
+
+p{
+
+    color: white;
+}
+
+h2{
+
+    color: white;
+    text-align: center;
+}
+
+#s-1{
+
+    display: flex;
+    text-align: center;
+    height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+}
+
+.contain-l{
+
+    width: 40%;
+    height: 100%;
+}
+
+.contain-r{
+
+    width: 100%;
+    height: 100%;
+}
+
+.w-i{
+
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(#510711, #1157d8);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin-top: 50px;
+    margin-left: 100px;
+    color: white;
+}
+
+.logo{
+
+    width: 80%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.h2-txt{
+
+    text-align: left;
+    width: 750px;
+    margin-top: 100px;
+    font-size: 60px;
+    text-shadow: 0 0 20px rgb(0, 28, 189), 0 0 20px rgb(53, 3, 3), 0 0 20px rgb(0, 4, 54);
+}
+
+.p-txt{
+
+    width: 750px;
+    margin-top: 50px;
+    font-size: 40px;
+    text-shadow: 0 0 20px rgb(0, 28, 189), 0 0 20px rgb(53, 3, 3), 0 0 20px rgb(0, 4, 54);
+}
+
+#s-2{
+
+    background-color: #000000;
+    width: 100%;
+    display: flex;
+}
+
+.planet{
+
+    width: 300px;
+    height: 300px;
+    margin-left: 100px;
+}
+
+#s-2 p{
+
+    font-size: 20px;
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 30px;
+    line-height: 30px;
+}
+
+.contain-btn{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    position: fixed;
+    gap: 10px;
+    margin-top: 20px;
+    padding-right: 10px;
+}
+
+.text-f{
+
+    line-height: 0px;
+    margin-top: 25px !important;
+}

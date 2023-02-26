@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/root.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../components/components-style.css">
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+    <title>Iniciar sesión</title>
+</head>
+<body>
+    
+    <div class="c-login">
+        <h1>
+            Bienvenido
+        </h1>
+        <div class="c-form">
+                <div class="c-input">
+                    <p class="label-user">
+                        Usuario
+                    </p>
+                    <input id="user" class="input" type="text" name="user" maxlength="16">
+                </div>
+                <div class="c-input">
+                    <p class="label-user">
+                        Clave   
+                    </p>
+                    <input id="password" class="input" type="password" name="password" maxlength="16">
+                </div>
+
+                <div class="c-input">
+                    <p id="alert" class="alert alert-success">
+                        
+                    </p>
+                </div>
+
+                <div class="c-input">
+                    <button id="btn-login" class="btn btn-blue btn-login">
+                        Log In
+                    </button>
+                    <p class="register">
+                        ¿No tienes una cuenta? 
+                        <a href="register.html">
+                            Registrarse
+                        </a>
+                    </p>
+                </div>
+        </div>
+    </div>
+
+    <!-- loadings components -->
+    <script src="../components/loading.js"></script>
+    
+    <!-- app.js -->
+    <script type="module" src="./app.js"></script>
+    
+</body>
+</html>
