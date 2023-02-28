@@ -35,6 +35,24 @@
     background-color: #cc0e24;
 }
 
+.btn-send{
+
+    color: white;
+    background-color: rgb(0, 28, 189);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all, 0.3s;
+}
+.btn-send:hover{
+
+    background-color: rgb(0, 38, 255);
+}
+
 /* inputs */
 
 .input{
