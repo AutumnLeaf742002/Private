@@ -46,6 +46,17 @@
             echo $res;
         }
 
+        // cerrar sesion
+        if($action == "cerrar_sesion")
+        {
+            include_once "chat.php";
+            $chat = new Chat();
+
+            $res = $chat->cerrar_sesion();
+
+            echo $res;
+        }
+
     }
 
 ?>

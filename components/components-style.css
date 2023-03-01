@@ -121,7 +121,7 @@ a{
     width: 100vw;
     height: 100vh;
     background-color: #1c1d22;
-    z-index: 100;
+    z-index: 200;
 }
 #circle{
 
@@ -156,7 +156,7 @@ a{
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.596);
-    z-index: 100;
+    z-index: 200;
     display: flex;
     justify-content: center;
     align-items: center;

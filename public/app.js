@@ -1,9 +1,11 @@
 import Register from '../modules/register.js'
 import Login from '../modules/login.js'
+import Chat from '../modules/chat.js'
 import component_loading_action from '../components/loading-action.js'
 const btn_sigin = document.getElementById('btn-sigin')
 const alert = document.getElementById('alert')
 const btn_login = document.getElementById('btn-login')
+const cerrar_sesion_dom = document.getElementById('cerrar_sesion')
 
 // create user
 function create_user()
@@ -88,8 +90,7 @@ function login_user()
 
             if(res == 1)
             {
-                alert_success("puede pasar")
-                window.location.href = "home.html"
+                window.location.href = "chat.html"
             }
             else if(res == 0)
             {
@@ -112,6 +113,32 @@ try
 
         login_user()
     })
+}
+catch(error)
+{
+    console.log(error)
+}
+
+// cerrar sesion
+function cerrar_sesion()
+{
+    component_loading_action.component_loading_action()
+    let chat = new Chat()
+    chat.cerrar_sesion(function(res){
+
+        if(res == 1)
+        {
+            window.location.href = "login.html";
+        }
+        else
+        {
+            console.log(res)
+        }
+    })
+}
+try
+{
+    cerrar_sesion_dom.addEventListener('click', cerrar_sesion)
 }
 catch(error)
 {

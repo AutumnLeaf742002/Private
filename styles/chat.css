@@ -1,3 +1,9 @@
+body{
+
+    position: relative;
+    overflow: hidden;
+}
+
 .c-all{
 
     width: 100vw;
@@ -229,7 +235,7 @@
     flex-direction: column;
     gap: 5px;
     padding: 10px;
-    background-color: #a70d1f;
+    background-color: #53070f;
     border-radius: 10px;
 }
 
@@ -251,7 +257,7 @@
 
 .self{
 
-    background-color: rgb(0, 18, 122);
+    background-color: rgb(0, 8, 54);
 }
 
 .actual-contact{
@@ -279,4 +285,54 @@
 
 #svg-send{
 
+}
+
+.menu{
+
+    height: 100vh;
+    width: 100px;
+    background-color: #3f4e57;
+    position: absolute;
+    right: 0%;
+    z-index: 101;
+    transform: translateX(100%);
+    transition: all, 0.1s;
+}
+
+.menu ul{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-top: 20px;
+}
+
+.menu ul li{
+
+    top: 100px;
+    color: rgb(230, 230, 230);
+}
+
+.tuerca{
+
+    position: absolute;
+    top: 15px;
+    left: -35px;
+    color: rgb(230, 230, 230);
+    background-color: #3f4e57;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    cursor: pointer;
+}
+
+svg{
+
+    cursor: pointer;
 }
