@@ -30,10 +30,23 @@ function create_user()
                     if(res == "Correct")
                     {
                         alert_success("Usuario creado correctamente. Redireccionando...")
-                        setTimeout(function(){
 
-                            window.location.href = "login.html"
-                        }, 3000)
+                        let login = new Login(user, password)
+                        login.login_user(function(res){
+
+                            if(res == 1)
+                            {
+                                setTimeout(function(){
+
+                                    window.location.href = "chat.html"
+                                }, 3000)
+                            }
+                            else
+                            {
+                                console.log(res)
+                            }
+                        })
+
                     }
                     else if(res.includes("for key 'User'"))
                     {
