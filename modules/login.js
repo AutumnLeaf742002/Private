@@ -1,12 +1,7 @@
 class Login
 {
-    constructor(user, password)
-    {
-        this._user = user
-        this._password = password
-    }
 
-    login_user(callback)
+    login_user(_user, _password, callback)
     {
         let request = new XMLHttpRequest()
         request.open('POST', '../controllers/app.php', true)
@@ -19,7 +14,7 @@ class Login
             }
         }
 
-        request.send(`user=${this._user}&password=${this._password}&action=login_user`)
+        request.send(`user=${_user}&password=${_password}&action=login_user`)
     }
 }
 

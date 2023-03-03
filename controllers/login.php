@@ -23,6 +23,9 @@
                         if($user_db == $user && $password_db == $password)
                         {
                             $con = true;
+                            $_SESSION["user"] = $user_db;
+                            $_SESSION["id"] = $res[0]["Id"];
+                            $_SESSION["password"] = $password_db;
                         }
                         else
                         {

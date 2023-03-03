@@ -1,11 +1,22 @@
 import Register from '../modules/register.js'
 import Login from '../modules/login.js'
 import Chat from '../modules/chat.js'
+import Contacts from '../modules/contacts.js'
 import component_loading_action from '../components/loading-action.js'
+
+// Botones para los eventos
 const btn_sigin = document.getElementById('btn-sigin')
 const alert = document.getElementById('alert')
 const btn_login = document.getElementById('btn-login')
 const cerrar_sesion_dom = document.getElementById('cerrar_sesion')
+
+// Clases para los modulos
+let register = new Register()
+let login = new Login()
+let chat = new Chat()
+let contacts = new Contacts()
+
+
 
 // create user
 function create_user()
@@ -22,8 +33,7 @@ function create_user()
             {
                 component_loading_action.component_loading_action()
 
-                let register = new Register(user, password, gender)
-                register.create_user(function(res) {
+                register.create_user(user, password, gender, function(res) {
 
                     component_loading_action.delete_component_action()
                     
@@ -31,8 +41,7 @@ function create_user()
                     {
                         alert_success("Usuario creado correctamente. Redireccionando...")
 
-                        let login = new Login(user, password)
-                        login.login_user(function(res){
+                        login.login_user(user, password, function(res){
 
                             if(res == 1)
                             {
@@ -96,8 +105,7 @@ function login_user()
     {
         component_loading_action.component_loading_action()
 
-        let login = new Login(user, password)
-        login.login_user(function(res){
+        login.login_user(user, password, function(res){
 
             component_loading_action.delete_component_action()
 
@@ -136,7 +144,6 @@ catch(error)
 function cerrar_sesion()
 {
     component_loading_action.component_loading_action()
-    let chat = new Chat()
     chat.cerrar_sesion(function(res){
 
         if(res == 1)
@@ -156,6 +163,36 @@ try
 catch(error)
 {
     console.log(error)
+}
+
+// get contacts
+function get_contacts()
+{
+    let contacts_dom = document.getElementById('contacts')
+
+    contacts.get_contacts(function(res){
+
+        contacts_dom.innerHTML = res
+    })
+}
+if(document.title = "Private-Chat")
+{
+    get_contacts()
+}
+
+// set profile
+function set_profile()
+{
+    let c_self = document.getElementById('c-self')
+
+    contacts.set_profile(function(res){
+
+        c_self.innerHTML = res
+    })
+}
+if(document.title = "Private-Chat")
+{
+    set_profile()
 }
 
 // others

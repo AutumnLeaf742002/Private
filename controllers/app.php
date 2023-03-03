@@ -7,56 +7,64 @@
         include_once "commands.php";
         session_start();
         $oCon = connect();
-
         $action = $_POST["action"];
+
+        //includes para los controladores php
+        include_once "register.php";
+        include_once "login.php";
+        include_once "chat.php";
+        include_once "contacts.php";
+
+        // objetos
+        $register = new Register();
+        $login = new Login();
+        $chat = new Chat();
+        $contacts = new Contacts();
+
+        // Determinantes
 
         // Create user
         if($action == "create_user")
         {
-            include_once "register.php";
-            $register = new Register();
     
             $user = $_POST["user"];
             $password = $_POST["password"];
             $password_enc = encrypt($password);
             $gender = $_POST["gender"];
-    
             $res = $register->create_user($user, $password_enc, $gender, $oCon);
-    
             echo $res;
         }
 
         // Login user
         if($action == "login_user")
-        {
-            include_once "login.php";
-            $login = new Login();
-    
+        {    
             $user = $_POST["user"];
             $password = $_POST["password"];
             $password_enc = encrypt($password);
-    
             $res = $login->login_user($user, $password_enc, $oCon);
-
-            if($res == true)
-            {
-                $_SESSION["user"] = $user;
-            }
-    
             echo $res;
         }
 
         // cerrar sesion
         if($action == "cerrar_sesion")
         {
-            include_once "chat.php";
-            $chat = new Chat();
-
             $res = $chat->cerrar_sesion();
-
             echo $res;
         }
 
+        // get_contacts
+        if($action == "get_contacts")
+        {    
+            $res = $contacts->get_contacts($oCon);
+            echo $res;
+        }
+
+        // set_profile
+        if($action == "set_profile")
+        {
+            $res = $contacts->set_profile($oCon);
+            echo $res;
+        }
     }
 
 ?>

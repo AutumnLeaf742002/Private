@@ -1,13 +1,6 @@
 class Register
 {
-    constructor(user, password, gender)
-    {
-        this._user = user
-        this._password = password
-        this._gender = gender
-    }
-
-    create_user(callback)
+    create_user(_user, _password, _gender, callback)
     {
         let request = new XMLHttpRequest()
         request.open('POST', '../controllers/app.php', true)
@@ -20,7 +13,7 @@ class Register
             }
         }
 
-        request.send(`user=${this._user}&password=${this._password}&gender=${this._gender}&action=create_user`)
+        request.send(`user=${_user}&password=${_password}&gender=${_gender}&action=create_user`)
     }
 }
 
