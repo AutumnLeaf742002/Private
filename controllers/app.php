@@ -65,6 +65,21 @@
             $res = $contacts->set_profile($oCon);
             echo $res;
         }
+
+        // set_chat
+        if($action == "set_chat")
+        {
+            $id = $_POST["id"];
+            $res = $chat->set_chat($oCon, $id);
+            echo $res;
+        }
+
+        // get_messeges
+        if($action == "get_messeges")
+        {
+            $res = $chat->get_messeges($oCon);
+            echo $res;
+        }
     }
 
 ?>

@@ -16,8 +16,6 @@ let login = new Login()
 let chat = new Chat()
 let contacts = new Contacts()
 
-
-
 // create user
 function create_user()
 {
@@ -173,9 +171,12 @@ function get_contacts()
     contacts.get_contacts(function(res){
 
         contacts_dom.innerHTML = res
+
+        set_chat()
     })
+
 }
-if(document.title = "Private-Chat")
+if(document.title == "Private-Chat")
 {
     get_contacts()
 }
@@ -190,7 +191,7 @@ function set_profile()
         c_self.innerHTML = res
     })
 }
-if(document.title = "Private-Chat")
+if(document.title == "Private-Chat")
 {
     set_profile()
 }
@@ -199,6 +200,44 @@ if(document.title = "Private-Chat")
 
 const gender_dom = document.querySelectorAll('.checkbox_gender')
 var gender = 0
+
+// set chat
+function set_chat()
+{
+    const list_contacts = document.querySelectorAll('.contact')
+        list_contacts.forEach((item) => {
+
+            item.addEventListener("click", function(event){
+
+                const id = event.currentTarget.dataset.value
+
+                list_contacts.forEach(item => {
+
+                    item.classList.remove('actual-contact')
+                })
+
+                event.currentTarget.classList.add('actual-contact')
+                chat.set_chat(id, function(res){
+
+                    const header_chat = document.getElementById('header-chat')
+                    header_chat.innerHTML = res
+
+                    get_messeges()
+
+                })
+            })
+        })
+}
+
+// get messeges
+function get_messeges()
+{
+    const c_messeges = document.getElementById("c-messeges")
+    chat.get_messeges(function(res){
+
+        c_messeges.innerHTML = res
+    })
+}
 
 gender_dom.forEach(element => {
     

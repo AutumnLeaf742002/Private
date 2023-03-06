@@ -19,7 +19,7 @@
                         if($item["Gender"] == 1)
                         {
                             $html.= '
-                            <div class="contact">
+                            <div class="contact" data-value="'.$item["Id"].'">
                                 <div class="c-img-contact">
                                     <img src="../img/hombre.jpg" alt="Private">
                                 </div>
@@ -37,7 +37,7 @@
                         else if($item["Gender"] == 2)
                         {
                             $html.= '
-                            <div class="contact">
+                            <div class="contact" data-value="'.$item["Id"].'">
                                 <div class="c-img-contact">
                                     <img src="../img/mujer.webp" alt="Private">
                                 </div>
