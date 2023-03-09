@@ -61,39 +61,86 @@
 
             foreach($res as $item)
             {
-                if($item["De"] == $id)
+                if($item === end($res))
                 {
-                    $html.= '
-                    <div class="messege-self">
-                        <div class="messege self">
-                            <div class="text-messege">
-                                '.$item["Messege"].'
-                            </div>
-                            <div class="hour-messege">
-                                '.$item["Date"].'
+                    if($item["De"] == $id)
+                    {
+                        $html.= '
+                        <div class="messege-self">
+                            <div class="messege self">
+                                <div class="text-messege" id="last_messege">
+                                    '.$item["Messege"].'
+                                </div>
+                                <div class="hour-messege">
+                                    '.$item["Date"].'
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    ';
+                        ';
+                    }
+                    else if($item["De"] == $actual_contact)
+                    {
+                        $html.= '
+                        <div>
+                            <div class="messege">
+                                <div class="text-messege" id="last_messege">
+                                    '.$item["Messege"].'
+                                </div>
+                                <div class="hour-messege">
+                                    '.$item["Date"].'
+                                </div>
+                            </div>
+                        </div>
+                        ';
+                    }
                 }
-                else if($item["De"] == $actual_contact)
+                else
                 {
-                    $html.= '
-                    <div>
-                        <div class="messege">
-                            <div class="text-messege">
-                                '.$item["Messege"].'
-                            </div>
-                            <div class="hour-messege">
-                                '.$item["Date"].'
+                    if($item["De"] == $id)
+                    {
+                        $html.= '
+                        <div class="messege-self">
+                            <div class="messege self">
+                                <div class="text-messege">
+                                    '.$item["Messege"].'
+                                </div>
+                                <div class="hour-messege">
+                                    '.$item["Date"].'
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    ';
+                        ';
+                    }
+                    else if($item["De"] == $actual_contact)
+                    {
+                        $html.= '
+                        <div>
+                            <div class="messege">
+                                <div class="text-messege">
+                                    '.$item["Messege"].'
+                                </div>
+                                <div class="hour-messege">
+                                    '.$item["Date"].'
+                                </div>
+                            </div>
+                        </div>
+                        ';
+                    }
                 }
             }
 
             return $html;
+        }
+
+        function add_messege($oCon, $messege, $date)
+        {
+            $id = $_SESSION["id"]??0;
+            $actual_contact = $_SESSION["actual_contact"]??0;
+            $sql = "CALL sp_add_messege($id, $actual_contact, '$messege', '$date')";
+
+            $res = command($oCon, $sql);
+
+            return $res;
         }
     }
 

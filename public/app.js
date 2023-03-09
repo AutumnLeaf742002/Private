@@ -9,6 +9,8 @@ const btn_sigin = document.getElementById('btn-sigin')
 const alert = document.getElementById('alert')
 const btn_login = document.getElementById('btn-login')
 const cerrar_sesion_dom = document.getElementById('cerrar_sesion')
+const btn_send = document.getElementById('btn-send')
+const input_send = document.getElementById('input-send')
 
 // Clases para los modulos
 let register = new Register()
@@ -196,11 +198,6 @@ if(document.title == "Private-Chat")
     set_profile()
 }
 
-// others
-
-const gender_dom = document.querySelectorAll('.checkbox_gender')
-var gender = 0
-
 // set chat
 function set_chat()
 {
@@ -236,7 +233,49 @@ function get_messeges()
     chat.get_messeges(function(res){
 
         c_messeges.innerHTML = res
+        scroll_messege()
     })
+}
+
+function add_messege()
+{
+    const messege = input_send.value
+
+    if(messege.length > 0 && messege.length <= 300)
+    {
+        chat.add_messege(messege, function(res){
+
+            if(res == "Correct")
+            {
+                get_messeges()
+                input_send.value = ""
+                scroll_messege()
+            }
+        })
+    }
+}
+if(document.title == "Private-Chat")
+{
+    btn_send.addEventListener('click', add_messege)
+    input_send.addEventListener('keydown', function(event){
+
+        if(event.keyCode === 13)
+        {
+            add_messege()
+        }
+    })
+}
+
+// others
+
+const gender_dom = document.querySelectorAll('.checkbox_gender')
+var gender = 0
+
+function scroll_messege()
+{
+    const c_messeges = document.getElementById("c-messeges")
+    const newMessageHeight = c_messeges.scrollHeight;
+    c_messeges.scrollTo(0, newMessageHeight);
 }
 
 gender_dom.forEach(element => {
@@ -260,3 +299,13 @@ function alert_error(messege)
     alert.classList.remove("alert-success")
     alert.classList.add("alert-error")
 }
+
+// actualizacion del chat para recibir mensaje nuevo sin recargar
+setInterval(function(){
+
+    const c_messeges = document.getElementById("c-messeges")
+    chat.get_messeges(function(res){
+
+        c_messeges.innerHTML = res
+    })
+}, 1000)

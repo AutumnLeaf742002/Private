@@ -80,6 +80,16 @@
             $res = $chat->get_messeges($oCon);
             echo $res;
         }
+
+        // add_messege
+        if($action == "add_messege")
+        {
+            $messege = $_POST["messege"]??"POST en messege vacio";
+            $date = get_date();
+
+            $res = $chat->add_messege($oCon, $messege, $date);
+            echo $res;
+        }
     }
 
 ?>

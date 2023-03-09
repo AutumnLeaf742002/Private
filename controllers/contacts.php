@@ -16,6 +16,9 @@
                 {
                     foreach($res as $item)
                     {
+                        $last_messege_res = select($oCon, 'CALL sp_get_last_messege('.$item["Id"].', '.$id.')');
+                        $last_messege = $last_messege_res[0]["Messege"]??"";
+
                         if($item["Gender"] == 1)
                         {
                             $html.= '
@@ -27,8 +30,8 @@
                                     <h1 title="'.$item["User"].'">
                                         '.$item["User"].'
                                     </h1>
-                                    <p title="Mensaje">
-                                        Mensaje
+                                    <p title="'.$last_messege.'">
+                                        '.$last_messege.'
                                     </p>
                                 </div>
                             </div>
@@ -45,8 +48,8 @@
                                     <h1 title="'.$item["User"].'">
                                         '.$item["User"].'
                                     </h1>
-                                    <p title="Mensaje">
-                                        Mensaje
+                                    <p title="'.$last_messege.'">
+                                    '.$last_messege.'
                                     </p>
                                 </div>
                             </div>

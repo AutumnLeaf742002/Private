@@ -38,7 +38,7 @@
     function get_date()
     {
         date_default_timezone_set("America/New_York");
-        $date = date("g:ia - j/n/y");
+        $date = date("g:i a - j/n/y");
         return $date;
     }
 
