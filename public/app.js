@@ -206,6 +206,17 @@ function set_chat()
 
             item.addEventListener("click", function(event){
 
+                try
+                {
+                    let current = event.currentTarget
+                    let current_child = current.querySelector('.pending')
+                    current.removeChild(current_child)
+                }
+                catch(error)
+                {
+                    console.log(error)
+                }
+
                 const id = event.currentTarget.dataset.value
 
                 list_contacts.forEach(item => {
@@ -214,13 +225,13 @@ function set_chat()
                 })
 
                 event.currentTarget.classList.add('actual-contact')
+
                 chat.set_chat(id, function(res){
 
                     const header_chat = document.getElementById('header-chat')
                     header_chat.innerHTML = res
 
                     get_messeges()
-
                 })
             })
         })
@@ -237,6 +248,7 @@ function get_messeges()
     })
 }
 
+// Agregar mensaje
 function add_messege()
 {
     const messege = input_send.value
@@ -308,4 +320,9 @@ setInterval(function(){
 
         c_messeges.innerHTML = res
     })
+}, 1000)
+
+setInterval(function(){
+
+    get_contacts()
 }, 1000)
