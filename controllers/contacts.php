@@ -300,7 +300,7 @@
                 else
                 {
                     $html.= '
-                            <div class="contact">
+                            <div class="contact-empty">
                                 <h1 style="font-size: 18px; text-align: center; width: 100%;">No tienes contactos. Prueba agregar a alguien</h1>
                             </div>
                         ';

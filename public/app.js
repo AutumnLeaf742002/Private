@@ -88,6 +88,17 @@ try
 
         create_user()
     })
+
+    if(document.title == "Registrarse")
+    {
+        window.addEventListener('keydown', function(event){
+
+            if(event.keyCode === 13)
+            {
+                create_user()
+            }
+        })
+    }
 }
 catch(error)
 {
@@ -134,6 +145,17 @@ try
 
         login_user()
     })
+
+    if(document.title == "Iniciar sesión")
+    {
+        window.addEventListener('keydown', function(event){
+
+            if(event.keyCode === 13)
+            {
+                login_user()
+            }
+        })
+    }
 }
 catch(error)
 {

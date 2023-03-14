@@ -64,6 +64,7 @@
     outline: none;
     border: none;
     background: none;
+    border: 2px solid transparent;
     border-bottom: 2px solid #8a92fff8;
     color: white;
     transition: all, 0.2s;
@@ -72,9 +73,12 @@
 
 .input:focus{
 
+    border-top: 2px solid #8a92fff8;
+    border-left: 2px solid #8a92fff8;
+    border-right: 2px solid #8a92fff8;
+    background-color: #8a92ff1a;
     color: white;
-    border-radius: 7px;
-    background: #8a92fff8;
+    border-radius: 15px;
     padding: 20px 10px;
 }
 
