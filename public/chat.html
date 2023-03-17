@@ -14,57 +14,66 @@
 </head>
 <body>
 
-    <div class="c-search-contacts">
+    <div class="c-search-contacts" id="c-search-contacts">
 
-        <div class="c-input">
-            <input type="text" class="input" placeholder="Buscar">
-        </div>
-
-        <div class="c-header-search">
-            <p>
-                Buscar contactos
-            </p>
-        </div>
-
-        <div class="results">
-
-            <div class="result">
-                <div class="c-img-result">
-                    <img src="../img/hombre.jpg" alt="Private-img">
-                </div>
-                <div class="user-result">
-                    <h1>
-                        Jose Roberto
-                    </h1>
-                </div>
-                <div class="c-btn-result">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>
-                </div>
-            </div>
-
-            <div class="result">
-                <div class="c-img-result">
-                    <img src="../img/mujer.webp" alt="Private-img">
-                </div>
-                <div class="user-result">
-                    <h1>
-                        Alana Marte 
-                    </h1>
-                </div>
-                <div class="c-btn-result">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>
-                </div>
+        <div class="c-all-search-contact">
+            <div class="c-svg-exit" onclick="close_add_contact()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                </svg>
             </div>
             
+            <div class="c-input">
+                <input type="text" class="input" placeholder="Buscar">
+            </div>
+            
+            <div class="c-header-search">
+                <p>
+                    Buscar contactos
+                </p>
+            </div>
+            
+            <div class="results">
+            
+                <div class="result">
+                    <div class="c-img-result">
+                        <img src="../img/hombre.jpg" alt="Private-img">
+                    </div>
+                    <div class="user-result">
+                        <h1>
+                            Jose Roberto
+                        </h1>
+                    </div>
+                    <div class="c-btn-result">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                        </svg>
+                    </div>
+                </div>
+            
+                <div class="result">
+                    <div class="c-img-result">
+                        <img src="../img/mujer.webp" alt="Private-img">
+                    </div>
+                    <div class="user-result">
+                        <h1>
+                            Alana Marte 
+                        </h1>
+                    </div>
+                    <div class="c-btn-result btn-red">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-slash-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"/>
+                        </svg>
+                    </div>
+                </div>
+                
+            </div>
         </div>
 
     </div>
 
-    <div class="c-all">
+    <div class="c-all" id="c-all">
         <div class="menu" id="menu">
 
             <div title="Menú" class="tuerca" id="tuerca">
@@ -75,7 +84,7 @@
     
             <ul>
     
-                <li title="Agregar contacto">
+                <li title="Agregar contacto" onclick="open_add_contact()">
                     <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
                         <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
                         <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>

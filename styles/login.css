@@ -17,7 +17,7 @@ body{
 
     width: 550px;
     height: 600px;
-    background: linear-gradient(#810a18, #090633);
+    background: linear-gradient(#810a18c5, #090633);
     padding: 20px;
     color: white;
     display: flex;

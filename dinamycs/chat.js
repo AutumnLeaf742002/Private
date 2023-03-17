@@ -1,6 +1,10 @@
 //init
     const tuerca = document.getElementById('tuerca')
     const menu = document.getElementById('menu')
+    const c_search_contacts = document.getElementById('c-search-contacts')
+    const c_all = document.getElementById('c-all')
+
+    let sw = 0
 
     // functions for hide search
     function show_search()
@@ -33,5 +37,32 @@
             show = false
         }
     }
+
+    // function for show add-contact
+    function open_add_contact()
+    {
+        c_all.style.filter = "brightness(40%)"
+        c_search_contacts.style.display = "flex"
+
+        setTimeout(function(){
+
+            sw = 1
+        }, 1000)
+    }
+    function close_add_contact()
+    {
+        c_all.style.filter = "brightness(100%)"
+        c_search_contacts.style.display = "none"
+        sw = 0
+    }
+
+    // evento for close window add-contact when click outside
+    c_all.addEventListener('click', function(){
+
+        if(sw == 1)
+        {
+            close_add_contact()
+        }
+    })
 
     tuerca.addEventListener('click', show_menu)
