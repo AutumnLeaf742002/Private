@@ -47,7 +47,7 @@
         setTimeout(function(){
 
             sw = 1
-        }, 1000)
+        }, 500)
     }
     function close_add_contact()
     {

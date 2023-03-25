@@ -90,6 +90,41 @@
             $res = $chat->add_messege($oCon, $messege, $date);
             echo $res;
         }
+
+        // get_contacts_by_input
+        if($action == "get_contacts_by_input")
+        {
+            $value = $_POST["value"]??"POST en value vacio";
+
+            $res = $chat->get_contacts_by_input($oCon, $value);
+            echo $res;
+        }
+
+        // add_relationship
+        if($action == "add_relationship")
+        {
+            $id = $_POST["id"]??"POST en id vacio";
+            $id_contact = $_POST["id_contact"]??"POST en id_contact vacio";
+            $res = $chat->add_relationship($oCon, $id, $id_contact);
+
+            $date = get_date();
+            $messege = "Hola, te he agregado como contacto";
+            $sql = "CALL sp_add_messege($id, $id_contact, '$messege', '$date')";
+            command($oCon, $sql);
+            $sql_pending = "CALL sp_set_pending($id, $id_contact, 1)";
+            command($oCon, $sql_pending);
+
+            echo $res;
+        }
+
+        // delete_relationship
+        if($action == "delete_relationship")
+        {
+            $id = $_POST["id"]??"POST en id vacio";
+            $id_contact = $_POST["id_contact"]??"POST en id_contact vacio";
+            $res = $chat->delete_relationship($oCon, $id, $id_contact);
+            echo $res;
+        }
     }
 
 ?>

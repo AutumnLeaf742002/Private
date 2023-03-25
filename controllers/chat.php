@@ -153,6 +153,154 @@
 
             return $res;
         }
+
+        function get_contacts_by_input($oCon, $value)
+        {
+            $id = $_SESSION["id"]??0;
+            $sql = "CALL sp_get_contacts_by_input('%$value%')";
+            $html = "";
+            $res = select($oCon, $sql);
+
+            if(!empty($value))
+            {
+                if(is_array($res))
+                {
+                    if(!empty($res))
+                    {
+                        foreach($res as $item)
+                        {
+                            $user = $item["User"];
+                            $id_contact = $item["Id"];
+                            $gender = $item["Gender"];
+
+                            $res_relationship = select($oCon, "CALL sp_get_relationship($id, $id_contact)");
+
+                            if($id != $id_contact)
+                            {
+                                if(is_array($res_relationship))
+                                {
+                                    if(!empty($res_relationship))
+                                    {
+                                        if($gender == 1)
+                                        {
+                                            $html .= '
+                                            <div class="result">
+                                                <div class="c-img-result">
+                                                    <img src="../img/hombre.jpg" alt="Private-img">
+                                                </div>
+                                                <div class="user-result">
+                                                    <h1>
+                                                        '.$user.'
+                                                    </h1>
+                                                </div>
+                                                <div class="c-btn-result btn-red" title="Eliminar relación" data-value="'.$id.'-'.$id_contact.'-amigos">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-slash-circle" viewBox="0 0 16 16">
+                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                        <path d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            ';
+                                        }
+                                        else if($gender == 2)
+                                        {
+                                            $html .= '
+                                            <div class="result">
+                                                <div class="c-img-result">
+                                                    <img src="../img/mujer.webp" alt="Private-img">
+                                                </div>
+                                                <div class="user-result">
+                                                    <h1>
+                                                        '.$user.'
+                                                    </h1>
+                                                </div>
+                                                <div class="c-btn-result btn-red" title="Eliminar relación" data-value="'.$id.'-'.$id_contact.'-amigos">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-slash-circle" viewBox="0 0 16 16">
+                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                        <path d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            ';
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if($gender == 1)
+                                        {
+                                            $html .= '
+                                            <div class="result">
+                                                <div class="c-img-result">
+                                                    <img src="../img/hombre.jpg" alt="Private-img">
+                                                </div>
+                                                <div class="user-result">
+                                                    <h1>
+                                                        '.$user.'
+                                                    </h1>
+                                                </div>
+                                                <div class="c-btn-result" title="Pedir relación" data-value="'.$id.'-'.$id_contact.'-noamigos">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            ';
+                                        }
+                                        else if($gender == 2)
+                                        {
+                                            $html .= '
+                                            <div class="result">
+                                                <div class="c-img-result">
+                                                    <img src="../img/mujer.webp" alt="Private-img">
+                                                </div>
+                                                <div class="user-result">
+                                                    <h1>
+                                                        '.$user.'
+                                                    </h1>
+                                                </div>
+                                                <div class="c-btn-result" title="Pedir relación" data-value="'.$id.'-'.$id_contact.'-noamigos">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            ';
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        $html = '<h1 style="text-align: center;">No se encontraron resultados<h1>';
+                    }
+                }
+            }
+
+            return $html;
+        }
+
+        function add_relationship($oCon, $id, $id_contact)
+        {
+            $sql = "CALL sp_create_relationship($id, $id_contact)";
+
+            $res = command($oCon, $sql);
+
+            return $res;
+        }
+
+        function delete_relationship($oCon, $id, $id_contact)
+        {
+            $sql1 = "CALL sp_delete_relationship($id, $id_contact)";
+            $sql2 = "CALL sp_delete_relationship($id_contact, $id)";
+            $res = "";
+            $res .= command($oCon, $sql1);
+            $res .= '-'.command($oCon, $sql2);
+
+            return $res;
+        }
     }
 
 ?>

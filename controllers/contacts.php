@@ -18,7 +18,7 @@
                     {
                         $sql_pending = 'CALL sp_get_pending('.$item["Id"].', '.$id.')';
                         $pending_res = select($oCon, $sql_pending);
-                        $pending = $pending_res[0]["Pending"];
+                        $pending = $pending_res[0]["Pending"]??"0";
 
                         $last_messege_res = select($oCon, 'CALL sp_get_last_messege('.$item["Id"].', '.$id.')');
                         $last_messege = $last_messege_res[0]["Messege"]??"";

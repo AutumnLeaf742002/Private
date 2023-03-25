@@ -300,6 +300,74 @@ if(document.title == "Private-Chat")
     })
 }
 
+// buscar contactos para agregar
+function get_add_contacts_by_input(input)
+{
+    input.addEventListener('keyup', function(){
+
+        const value = input.value
+        chat.get_contacts_by_input(value, function(res){
+
+            results.innerHTML = res
+            set_event_btn_add_contact()
+        })
+    })
+}
+if(document.title == "Private-Chat")
+{
+    const results = document.getElementById('results')
+    const input_search_contact = document.getElementById('input-search-contact')
+    get_add_contacts_by_input(input_search_contact)
+}
+
+// agregar eventos a los botones de accion de agregar contacto
+function set_event_btn_add_contact()
+{
+    try
+    {
+        const array_result = document.querySelectorAll('.c-btn-result')
+        array_result.forEach(function(item){
+
+            item.addEventListener('click', function(){
+
+                const split = item.dataset.value.split("-")
+                const id = split[0]
+                const id_contact = split[1]
+                const estatus = split[2]
+
+                if(estatus == "noamigos")
+                {
+                    chat.add_relationship(id, id_contact)
+                    const input_search_contact = document.getElementById('input-search-contact')
+                    const value = input_search_contact.value
+                    chat.get_contacts_by_input(value, function(res){
+
+                        results.innerHTML = res
+                        set_event_btn_add_contact()
+                    })
+                }
+                else if(estatus == "amigos")
+                {
+                    console.log(estatus)
+                    chat.delete_relationship(id, id_contact)
+
+                    const input_search_contact = document.getElementById('input-search-contact')
+                    const value = input_search_contact.value
+                    chat.get_contacts_by_input(value, function(res){
+
+                        results.innerHTML = res
+                        set_event_btn_add_contact()
+                    })
+                }
+            })
+        })
+
+    }catch(error)
+    {
+        console.log(error)
+    }
+}
+
 // others
 
 const gender_dom = document.querySelectorAll('.checkbox_gender')
