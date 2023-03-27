@@ -306,18 +306,38 @@ function get_add_contacts_by_input(input)
     input.addEventListener('keyup', function(){
 
         const value = input.value
-        chat.get_contacts_by_input(value, function(res){
 
-            results.innerHTML = res
-            set_event_btn_add_contact()
-        })
+        if(value == "")
+        {
+            get_all_contacts()
+        }
+        else
+        {
+            chat.get_contacts_by_input(value, function(res){
+
+                results.innerHTML = res
+                set_event_btn_add_contact()
+            })
+        }
     })
 }
 if(document.title == "Private-Chat")
 {
-    const results = document.getElementById('results')
     const input_search_contact = document.getElementById('input-search-contact')
     get_add_contacts_by_input(input_search_contact)
+    get_all_contacts()
+}
+
+function get_all_contacts()
+{
+
+    const value = "empty"
+
+    chat.get_contacts_by_input(value, function (res) {
+
+        results.innerHTML = res
+        set_event_btn_add_contact()
+    })
 }
 
 // agregar eventos a los botones de accion de agregar contacto
@@ -339,7 +359,13 @@ function set_event_btn_add_contact()
                 {
                     chat.add_relationship(id, id_contact)
                     const input_search_contact = document.getElementById('input-search-contact')
-                    const value = input_search_contact.value
+                    let value = input_search_contact.value
+
+                    if(value == "")
+                    {
+                        value = "empty"
+                    }
+
                     chat.get_contacts_by_input(value, function(res){
 
                         results.innerHTML = res
@@ -352,7 +378,13 @@ function set_event_btn_add_contact()
                     chat.delete_relationship(id, id_contact)
 
                     const input_search_contact = document.getElementById('input-search-contact')
-                    const value = input_search_contact.value
+                    let value = input_search_contact.value
+
+                    if(value == "")
+                    {
+                        value = "empty"
+                    }
+
                     chat.get_contacts_by_input(value, function(res){
 
                         results.innerHTML = res

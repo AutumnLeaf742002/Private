@@ -94,7 +94,7 @@
         // get_contacts_by_input
         if($action == "get_contacts_by_input")
         {
-            $value = $_POST["value"]??"POST en value vacio";
+            $value = $_POST["value"]??"empty";
 
             $res = $chat->get_contacts_by_input($oCon, $value);
             echo $res;

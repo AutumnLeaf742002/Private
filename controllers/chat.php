@@ -157,8 +157,14 @@
         function get_contacts_by_input($oCon, $value)
         {
             $id = $_SESSION["id"]??0;
-            $sql = "CALL sp_get_contacts_by_input('%$value%')";
             $html = "";
+            $sql = "CALL sp_get_contacts_by_input('%$value%')";
+
+            if($value == "empty")
+            {
+                $sql = "CALL sp_get_all_contacts()";
+            }
+
             $res = select($oCon, $sql);
 
             if(!empty($value))
