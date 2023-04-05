@@ -270,7 +270,7 @@ function get_messeges()
     })
 }
 
-// Agregar mensaje
+// add messege
 function add_messege()
 {
     const messege = input_send.value
