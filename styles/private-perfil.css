@@ -1,0 +1,83 @@
+body{
+
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-information{
+
+    background-color: #353535;
+    width: 1000px;
+    height: 600px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.c-img{
+
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-img img{
+
+
+    width: 100%;
+}
+
+input{
+
+    width: 500px !important;
+}
+
+.select-gender{
+
+    width: 500px;
+    height: 40px;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 0px 10px 10px;
+    outline: none;
+}
+
+h1{
+
+    color: white;
+}
+
+button{
+
+    justify-content: center !important;
+}
+
+.arrow{
+
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: white;
+    cursor: pointer;
+    transition: all, 0.1s;
+}
+
+.arrow:hover{
+
+    transform: scale(1.1);
+}
