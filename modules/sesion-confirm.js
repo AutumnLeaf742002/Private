@@ -22,6 +22,10 @@ function sesion_confirm()
                 {
                     window.location.href = "login.html"
                 }
+                if(page_title == "Private-perfil")
+                {
+                    window.location.href = "login.html"
+                }
             }
             else
             {

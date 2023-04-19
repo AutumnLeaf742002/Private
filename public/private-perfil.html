@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
+<script src="../modules/sesion-confirm.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +18,7 @@
 
     <div class="c-information">
 
-        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+        <svg class="arrow" id="arrow" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
         </svg>
 
@@ -28,10 +30,10 @@
             Cambiar Información
         </h1>
 
-        <input type="text" class="input user" placeholder="Nuevo usuario">
+        <input id="input_user" type="text" class="input user" placeholder="Nuevo usuario" maxlength="16">
         
-        <select id="" class="select-gender">
-            <option value="" selected>
+        <select id="select_gender" class="select-gender">
+            <option value="0" selected>
                 Cambiar genero
             </option>
             <option value="1">
@@ -42,9 +44,9 @@
             </option>
         </select>
         
-        <input type="text" class="input password" placeholder="Nueva contraseña">
+        <input id="input_password" type="text" class="input password" placeholder="Nueva contraseña" maxlength="16">
 
-        <button class="btn btn-blue btn-guardar" title="Guardar">
+        <button id="btn-guardar" class="btn btn-blue btn-guardar" title="Guardar">
 
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                 <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
@@ -54,6 +56,15 @@
         </button>
 
     </div>
+
+    <!-- app.js -->
+    <script type="module" src="app.js"></script>
+
+    <!-- dinamycs -->
+    <script src="../dinamycs/private-perfil.js"></script>
+
+    <!-- loadings components -->
+    <script src="../components/loading.js"></script>
 
 </body>
 </html>

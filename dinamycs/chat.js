@@ -3,6 +3,7 @@
     const menu = document.getElementById('menu')
     const c_search_contacts = document.getElementById('c-search-contacts')
     const c_all = document.getElementById('c-all')
+    const mi_perfil = document.getElementById('mi_perfil')
 
     let sw = 0
 
@@ -63,6 +64,11 @@
         {
             close_add_contact()
         }
+    })
+
+    mi_perfil.addEventListener('click', ()=>{
+
+        window.location.href = 'private-perfil.html'
     })
 
     tuerca.addEventListener('click', show_menu)

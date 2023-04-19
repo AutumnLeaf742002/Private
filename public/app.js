@@ -2,6 +2,7 @@ import Register from '../modules/register.js'
 import Login from '../modules/login.js'
 import Chat from '../modules/chat.js'
 import Contacts from '../modules/contacts.js'
+import Perfil from '../modules/perfil.js'
 import component_loading_action from '../components/loading-action.js'
 
 // Botones para los eventos
@@ -17,6 +18,7 @@ let register = new Register()
 let login = new Login()
 let chat = new Chat()
 let contacts = new Contacts()
+let perfil = new Perfil()
 
 // create user
 function create_user()
@@ -398,6 +400,59 @@ function set_event_btn_add_contact()
     {
         console.log(error)
     }
+}
+
+// private-perfil
+function set_values()
+{
+    let user_dom = document.getElementById('input_user')
+    let password_dom = document.getElementById('input_password')
+    let select_gender_dom = document.getElementById('select_gender')
+    let data
+
+    perfil.get_data_user(function(res){
+
+        data = res.split("/")
+        user_dom.value = data[0]
+    })
+
+    const btn_guardar = document.getElementById('btn-guardar')
+    btn_guardar.addEventListener('click', function(){
+
+        const user = user_dom.value
+        let password = password_dom.value
+        let gender = select_gender_dom.value
+
+        if(gender == 0)
+        {
+            gender = data[1]
+        }
+
+        if(password.length == 0)
+        {
+            password = "not_password"
+        }
+
+        if(user.length > 7 && password.length > 7 && user.length < 17 && password.length < 17)
+        {
+            perfil.update_user(user, password, gender, function(res){
+
+                if(res == "Correct")
+                {
+                    window.alert("Cambios realizados con exito")
+                    window.location.href = 'private-perfil.html'
+                }
+            })
+        }
+        else
+        {
+            window.alert("Los campos de texto deben estar entre 8 y 16 caracteres")
+        }
+    })
+}
+if(document.title == 'Private-perfil')
+{
+    set_values()
 }
 
 // others

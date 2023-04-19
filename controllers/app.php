@@ -14,12 +14,14 @@
         include_once "login.php";
         include_once "chat.php";
         include_once "contacts.php";
+        include_once "perfil.php";
 
         // objetos
         $register = new Register();
         $login = new Login();
         $chat = new Chat();
         $contacts = new Contacts();
+        $perfil = new Perfil();
 
         // Determinantes
 
@@ -123,6 +125,24 @@
             $id = $_POST["id"]??"POST en id vacio";
             $id_contact = $_POST["id_contact"]??"POST en id_contact vacio";
             $res = $chat->delete_relationship($oCon, $id, $id_contact);
+            echo $res;
+        }
+
+        // get_data_user
+        if($action == "get_data_user")
+        {
+            $res = $perfil->get_data_user($oCon);
+            echo $res;
+        }
+
+        // update_user
+        if($action == "update_user")
+        {
+            $user = $_POST["user"];
+            $password = $_POST["password"];
+            $gender = $_POST["gender"];
+
+            $res = $perfil->update_user($oCon, $user, $password, $gender);
             echo $res;
         }
     }
