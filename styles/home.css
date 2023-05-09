@@ -37,7 +37,7 @@ h2{
     display: flex;
     text-align: center;
     height: 400px;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/background.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/background.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -71,7 +71,7 @@ h2{
 
 .logo{
 
-    width: 80%;
+    width: 150%;
     height: auto;
     position: absolute;
     top: 50%;
@@ -105,9 +105,11 @@ h2{
 
 .planet{
 
+    margin-top: 30px;
     width: 300px;
     height: 300px;
     margin-left: 100px;
+    border-radius: 100%;
 }
 
 #s-2 p{

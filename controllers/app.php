@@ -2,7 +2,8 @@
     
     if(!empty($_POST))
     {
-        
+
+        // objeto de conexion y metodos de manejo sql
         include_once "connection.php";
         include_once "commands.php";
         session_start();
@@ -23,7 +24,7 @@
         $contacts = new Contacts();
         $perfil = new Perfil();
 
-        // Determinantes
+        // Determinantes para la decision de la accion
 
         // Create user
         if($action == "create_user")
